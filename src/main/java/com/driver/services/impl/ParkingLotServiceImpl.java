@@ -33,12 +33,10 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour) throws Exception {
         ParkingLot newParkingLot;
-        try{
-           newParkingLot = parkingLotRepository1.findById(parkingLotId).get();
 
-        }catch (Exception e){
-            throw new Exception("Parking lot doesn't found");
-        }
+        newParkingLot = parkingLotRepository1.findById(parkingLotId).get();
+
+
 
         Spot newSpot = new Spot();
         SpotType st;
