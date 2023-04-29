@@ -33,10 +33,12 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour) throws Exception {
         ParkingLot newParkingLot;
+        try{
+           newParkingLot = parkingLotRepository1.findById(parkingLotId).get();
 
-        newParkingLot = parkingLotRepository1.findById(parkingLotId).get();
-
-
+        }catch (Exception e){
+            throw new Exception("Parking lot doesn't found");
+        }
 
         Spot newSpot = new Spot();
         SpotType st;
@@ -67,14 +69,25 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     }
 
     @Override
-    public void deleteSpot(int spotId) {
-        spotRepository1.deleteById(spotId);
+    public void deleteSpot(int spotId) throws Exception {
+        try {
+            spotRepository1.deleteById(spotId);
+
+        }catch (Exception e){
+            throw new Exception("no spot");
+        }
 
     }
 
     @Override
     public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
-      ParkingLot parkingLot=parkingLotRepository1.findById(parkingLotId).get();
+        ParkingLot parkingLot;
+        try {
+            parkingLot=parkingLotRepository1.findById(parkingLotId).get();
+
+        }catch (Exception e){
+            throw new RuntimeException();
+        }
 
         List<Spot> spots = parkingLot.getSpotList();
 
@@ -94,6 +107,11 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteParkingLot(int parkingLotId) {
-         parkingLotRepository1.deleteById(parkingLotId);
+        try {
+            parkingLotRepository1.deleteById(parkingLotId);
+
+        }catch (Exception e){
+            throw new RuntimeException();
+        }
     }
 }
