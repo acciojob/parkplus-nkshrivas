@@ -11,9 +11,10 @@ public class Spot {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+    @Enumerated(EnumType.STRING)
     private SpotType spotType;
     private int pricePerHour;
-    Boolean occupied=false;
+    Boolean occupied;
 
     @ManyToOne
     @JoinColumn

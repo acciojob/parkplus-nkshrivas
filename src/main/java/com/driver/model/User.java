@@ -9,14 +9,14 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
     private String phoneNumber;
     private String password;
 
-    @OneToMany(mappedBy = "reservation",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<Reservation> reservationList=new ArrayList<>();
 
     public User(int id, String name, String phoneNumber, String password, List<Reservation> reservationList) {

@@ -37,7 +37,8 @@ public class ReservationServiceImpl implements ReservationService {
     public Reservation reserveSpot(Integer userId, Integer parkingLotId, Integer timeInHours, Integer numberOfWheels) throws Exception {
       Reservation newReservation = new Reservation();
       try {
-          newReservation.setUser(userRepository3.findById(userId).get());
+          User user =userRepository3.findById(userId).get();
+          newReservation.setUser(user);
           ParkingLot parkingLot=parkingLotRepository3.findById(parkingLotId).get();
 
           List<Spot> spotList =parkingLot.getSpotList();
@@ -49,12 +50,17 @@ public class ReservationServiceImpl implements ReservationService {
               if(!spot.getOccupied() && spot.getSpotType()==getSpotTypeByWheels(numberOfWheels) && totalPrice>spotPrice){
                   spot1=spot;
                   totalPrice=spotPrice;
+
               }
           }
+          spot1.setOccupied(true);
           newReservation.setSpot(spot1);
 
           newReservation.setNoOfHours(timeInHours);
 
+          user.getReservationList().add(newReservation);
+
+          userRepository3.save(user);
           reservationRepository3.save(newReservation);
 
           return newReservation;

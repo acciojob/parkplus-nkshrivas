@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private boolean paymentCompleted;
-
+    @Enumerated(EnumType.STRING)
     PaymentMode paymentMode;
 
     @OneToOne

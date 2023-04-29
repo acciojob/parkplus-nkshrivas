@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="parking_lot")
+@Table(name="parkingLot")
 public class ParkingLot {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "parking_lot",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "parkingLot",cascade = CascadeType.ALL)
     List<Spot> spotList=new ArrayList<>();
 
     public ParkingLot() {
