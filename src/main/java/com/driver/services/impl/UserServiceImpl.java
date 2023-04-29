@@ -15,7 +15,12 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository4;
     @Override
     public void deleteUser(Integer userId) {
-        userRepository4.deleteById(userId);
+        try {
+            userRepository4.deleteById(userId);
+
+        }catch (Exception e){
+            throw new RuntimeException();
+        }
     }
 
     @Override
