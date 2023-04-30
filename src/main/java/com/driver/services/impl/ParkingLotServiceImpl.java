@@ -54,7 +54,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
         newParkingLot.getSpotList().add(newSpot);
 
-        parkingLotRepository1.save(newParkingLot);
+//        parkingLotRepository1.save(newParkingLot);
 
         newSpot.setParkingLot(newParkingLot);
 
@@ -100,7 +100,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteParkingLot(int parkingLotId) {
-     
+
             parkingLotRepository1.deleteById(parkingLotId);
 
 
