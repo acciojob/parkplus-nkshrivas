@@ -14,7 +14,7 @@ public class Spot {
     @Enumerated(value = EnumType.STRING)
     private SpotType spotType;
     private int pricePerHour;
-    Boolean occupied;
+    Boolean occupied=false;
 
     @ManyToOne
     @JoinColumn
