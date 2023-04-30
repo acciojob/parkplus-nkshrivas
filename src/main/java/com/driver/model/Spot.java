@@ -11,7 +11,7 @@ public class Spot {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private SpotType spotType;
     private int pricePerHour;
     Boolean occupied;

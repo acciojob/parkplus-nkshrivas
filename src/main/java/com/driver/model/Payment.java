@@ -2,14 +2,17 @@ package com.driver.model;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "payment")
 public class Payment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private boolean paymentCompleted;
-    @Enumerated(EnumType.STRING)
-    PaymentMode paymentMode;
+    @Enumerated(value = EnumType.STRING)
+    private PaymentMode paymentMode;
 
     @OneToOne
     @JoinColumn
