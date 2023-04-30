@@ -15,23 +15,18 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository4;
     @Override
     public void deleteUser(Integer userId) {
-        try {
+
             userRepository4.deleteById(userId);
 
-        }catch (Exception e){
-            throw new RuntimeException();
-        }
+
     }
 
     @Override
     public User updatePassword(Integer userId, String password) {
         User updatedUser;
-        try {
+
            updatedUser = userRepository4.findById(userId).get();
-        }
-        catch (Exception e){
-            throw new RuntimeException();
-        }
+
         updatedUser.setPassword(password);
 
         userRepository4.save(updatedUser);
